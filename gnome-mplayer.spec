@@ -1,7 +1,7 @@
 Summary:	GNOME Frontend for MPlayer
 Name:		gnome-mplayer
 Version:	0.4.6
-Release:	0.1
+Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://dekorte.homeip.net/download/gnome-mplayer/%{name}-%{version}.tar.gz
