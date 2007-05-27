@@ -1,4 +1,5 @@
 Summary:	GNOME Frontend for MPlayer
+Summary(pl.UTF-8):	Frontend GNOME dla MPlayera
 Name:		gnome-mplayer
 Version:	0.4.6
 Release:	1
@@ -16,15 +17,25 @@ BuildRequires:	gtk+2-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.357
+Requires(post,postun):	desktop-file-utils
+Requires(post,preun):	GConf2
 Requires:	mplayer
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 GNOME MPlayer is a simple GUI for MPlayer. It is based heavily on the
 mplayerplug-in source code and can basically be seen as a standalone
-version of that. GNOME MP layer is currently changing alot. However,
+version of that. GNOME MPlayer is currently changing a lot. However,
 it is good enough that I can use it as my default viewer for media on
 my personal machine.
+
+%description -l pl.UTF-8
+GNOME MPlayer to prosty graficzny interfejs dla MPlayera. Jest w dużym
+stopniu oparty na kodzie źródłowym wtyczki mplayerplug-in i można go
+zasadniczo postrzegać jako jej samodzielną wersję. GNOME MPlayer
+aktualnie znacząco się zmienia. Jest jednak już wystarczająco dobry do
+używania jako domyślna przeglądarka multimediów na komputerze
+osobistym autora.
 
 %prep
 %setup -q
