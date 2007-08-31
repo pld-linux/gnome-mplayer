@@ -1,12 +1,12 @@
 Summary:	GNOME Frontend for MPlayer
 Summary(pl.UTF-8):	Frontend GNOME dla MPlayera
 Name:		gnome-mplayer
-Version:	0.4.7
+Version:	0.5.0
 Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://dekorte.homeip.net/download/gnome-mplayer/%{name}-%{version}.tar.gz
-# Source0-md5:	e3d2427653a10313c26634bc395b90ca
+# Source0-md5:	f13f9f465fdf46fce7973331532e3f2e
 URL:		http://dekorte.homeip.net/download/gnome-mplayer/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
