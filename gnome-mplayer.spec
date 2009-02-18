@@ -2,7 +2,7 @@ Summary:	GNOME Frontend for MPlayer
 Summary(pl.UTF-8):	Frontend GNOME dla MPlayera
 Name:		gnome-mplayer
 Version:	0.9.3
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://gnome-mplayer.googlecode.com/files/%{name}-%{version}.tar.gz
