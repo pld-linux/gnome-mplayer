@@ -1,12 +1,14 @@
+# TODO:
+# - nautilus-gnome-mplayer subpackage
 Summary:	GNOME Frontend for MPlayer
 Summary(pl.UTF-8):	Frontend GNOME dla MPlayera
 Name:		gnome-mplayer
-Version:	0.9.4
-Release:	2
+Version:	0.9.5
+Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://gnome-mplayer.googlecode.com/files/%{name}-%{version}.tar.gz
-# Source0-md5:	42722c0361a43c16fea6261b2b2118e9
+# Source0-md5:	02d01f1cca7ff3af511c59198f3c35a7
 URL:		http://kdekorte.googlepages.com/gnomemplayer
 BuildRequires:	alsa-lib-devel
 BuildRequires:	autoconf >= 2.57
