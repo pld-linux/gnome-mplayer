@@ -1,0 +1,10 @@
+--- gnome-mplayer-0.9.6/src/libgmlib/Makefile.am~	2009-05-18 15:04:21.000000000 +0200
++++ gnome-mplayer-0.9.6/src/libgmlib/Makefile.am	2009-06-20 21:38:16.233478837 +0200
+@@ -20,5 +20,7 @@
+ 	$(GLIB_LDFLAGS) \
+ 	$(GCONF_LDFLAGS)
+ 
++libgmlib_la_LIBADD = \
++	$(GLIB_LIBS) $(GCONF_LIBS)
+ 
+  
