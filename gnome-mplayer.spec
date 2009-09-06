@@ -3,12 +3,12 @@
 Summary:	GNOME Frontend for MPlayer
 Summary(pl.UTF-8):	Frontend GNOME dla MPlayera
 Name:		gnome-mplayer
-Version:	0.9.6
-Release:	2
+Version:	0.9.7
+Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://gnome-mplayer.googlecode.com/files/%{name}-%{version}.tar.gz
-# Source0-md5:	911e376dce8bbaf26bae2c70e3b3603b
+# Source0-md5:	09887967c1f853155df65732436120c6
 Patch0:		%{name}-build.patch
 URL:		http://kdekorte.googlepages.com/gnomemplayer
 BuildRequires:	alsa-lib-devel
@@ -83,5 +83,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog README DOCS/keyboard_shortcuts.txt DOCS/tech/*.*
 %attr(755,root,root) %{_bindir}/*
 %{_sysconfdir}/gconf/schemas/*.schemas
-%{_pixmapsdir}/*.png
+%{_iconsdir}/hicolor/*/apps/*.png
 %{_desktopdir}/*.desktop
+%{_mandir}/man1/*.1*
