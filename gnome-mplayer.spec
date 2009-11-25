@@ -11,20 +11,26 @@ Source0:	http://gnome-mplayer.googlecode.com/files/%{name}-%{version}.tar.gz
 # Source0-md5:	09887967c1f853155df65732436120c6
 Patch0:		%{name}-build.patch
 URL:		http://kdekorte.googlepages.com/gnomemplayer
+BuildRequires:	GConf2
+BuildRequires:	GConf2-devel
 BuildRequires:	alsa-lib-devel
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
+BuildRequires:	curl-devel
 BuildRequires:	dbus-devel
 BuildRequires:	dbus-glib-devel
 BuildRequires:	gettext-devel
+BuildRequires:	gnome-power-manager
 BuildRequires:	gtk+2-devel
-BuildRequires:	libtool
 BuildRequires:	libgpod-devel
 BuildRequires:	libmusicbrainz3-devel
 BuildRequires:	libnotify-devel
 BuildRequires:	libstdc++-devel
+BuildRequires:	libtool
 BuildRequires:	pkgconfig
+BuildRequires:	pulseaudio
 BuildRequires:	rpmbuild(macros) >= 1.357
+BuildRequires:	which
 Requires(post,postun):	desktop-file-utils
 Requires(post,preun):	GConf2
 Requires:	mplayer
