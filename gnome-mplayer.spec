@@ -4,7 +4,7 @@ Summary:	GNOME Frontend for MPlayer
 Summary(pl.UTF-8):	Frontend GNOME dla MPlayera
 Name:		gnome-mplayer
 Version:	0.9.9
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://gnome-mplayer.googlecode.com/files/%{name}-%{version}.tar.gz
@@ -21,7 +21,6 @@ BuildRequires:	curl-devel
 BuildRequires:	dbus-devel
 BuildRequires:	dbus-glib-devel
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-power-manager
 BuildRequires:	gtk+2-devel
 BuildRequires:	libgpod-devel
 BuildRequires:	libmusicbrainz3-devel
@@ -29,7 +28,6 @@ BuildRequires:	libnotify-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
-BuildRequires:	pulseaudio
 BuildRequires:	rpmbuild(macros) >= 1.357
 BuildRequires:	which
 Requires(post,postun):	desktop-file-utils
