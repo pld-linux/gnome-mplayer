@@ -21,6 +21,7 @@ BuildRequires:	curl-devel
 BuildRequires:	dbus-devel
 BuildRequires:	dbus-glib-devel
 BuildRequires:	gettext-devel
+BuildRequires:	gnome-power-manager
 BuildRequires:	gtk+2-devel
 BuildRequires:	libgpod-devel
 BuildRequires:	libmusicbrainz3-devel
@@ -28,6 +29,7 @@ BuildRequires:	libnotify-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
+BuildRequires:	pulseaudio
 BuildRequires:	rpmbuild(macros) >= 1.357
 BuildRequires:	which
 Requires(post,postun):	desktop-file-utils
