@@ -1,0 +1,18 @@
+--- gnome-mplayer-0.9.9/src/gui.c~	2010-01-29 19:22:00.000000000 +0100
++++ gnome-mplayer-0.9.9/src/gui.c	2011-04-07 16:42:16.359914628 +0200
+@@ -417,10 +417,15 @@
+         if (show_notification && control_id == 0 && !gtk_window_is_active((GtkWindow *) window)) {
+             notify_init("gnome-mplayer");
+             notification =
++#if !defined(NOTIFY_VERSION_MINOR) || (NOTIFY_VERSION_MAJOR == 0 && NOTIFY_VERSION_MINOR < 7)
+                 notify_notification_new(idle->display_name, idle->media_notification,
+                                         "gnome-mplayer", NULL);
+             if (show_status_icon)
+                 notify_notification_attach_to_status_icon(notification, status_icon);
++#else
++	        notify_notification_new(idle->display_name, idle->media_notification,
++					"gnome-mplayer");
++#endif
+             notify_notification_show(notification, NULL);
+             notify_uninit();
+         }

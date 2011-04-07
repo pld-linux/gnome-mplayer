@@ -11,6 +11,7 @@ Source0:	http://gnome-mplayer.googlecode.com/files/%{name}-%{version}.tar.gz
 # Source0-md5:	335918da07a62941778444e126ae5ede
 Patch0:		%{name}-build.patch
 Patch1:		%{name}-desktop.patch
+Patch2:		%{name}-libnotify.patch
 URL:		http://kdekorte.googlepages.com/gnomemplayer
 BuildRequires:	GConf2
 BuildRequires:	GConf2-devel
@@ -56,6 +57,7 @@ osobistym autora.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__libtoolize}
