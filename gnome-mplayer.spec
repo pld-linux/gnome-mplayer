@@ -45,6 +45,7 @@ BuildRequires:	which
 Requires(post,postun):	desktop-file-utils
 Requires(post,preun):	GConf2
 Requires:	mplayer
+Suggests:	dconf
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
