@@ -1,17 +1,20 @@
 # TODO:
 # - nautilus-gnome-mplayer subpackage
+# - double-check gnome-power-manager BR
+#
+# Conditional build:
+%bcond_without  gtk3            # build without GTK+3
+
 Summary:	GNOME Frontend for MPlayer
 Summary(pl.UTF-8):	Frontend GNOME dla MPlayera
 Name:		gnome-mplayer
-Version:	0.9.9
-Release:	4
+Version:	1.0.5
+Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://gnome-mplayer.googlecode.com/files/%{name}-%{version}.tar.gz
-# Source0-md5:	335918da07a62941778444e126ae5ede
-Patch0:		%{name}-build.patch
-Patch1:		%{name}-desktop.patch
-Patch2:		%{name}-libnotify.patch
+# Source0-md5:	1d3ab24c5501b5528e357931ca4dc6da
+Patch0:		%{name}-desktop.patch
 URL:		http://kdekorte.googlepages.com/gnomemplayer
 BuildRequires:	GConf2
 BuildRequires:	GConf2-devel
@@ -21,9 +24,15 @@ BuildRequires:	automake
 BuildRequires:	curl-devel
 BuildRequires:	dbus-devel
 BuildRequires:	dbus-glib-devel
+Requires(post,postun):	glib2 >= 1:2.26.0
+# BuildRequires:	gnome-power-manager
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-power-manager
+BuildRequires:	gmtk-devel >= 1.0.5
+%if %{with gtk3}
+BuildRequires:	gtk+3-devel
+%else
 BuildRequires:	gtk+2-devel
+%endif
 BuildRequires:	libgpod-devel
 BuildRequires:	libmusicbrainz3-devel
 BuildRequires:	libnotify-devel
@@ -56,15 +65,14 @@ osobistym autora.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-%configure
+%configure \
+	%{!?with_gtk3:--disable-gtk3}
 %{__make}
 
 %install
@@ -72,6 +80,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas
+install %{name}.schemas $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas
+
+install -d $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas
+install apps.gecko-mediaplayer.preferences.gschema.xml $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas
+install apps.gnome-mplayer.preferences.enums.xml $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas
+install apps.gnome-mplayer.preferences.gschema.xml $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas
 
 %find_lang %{name}
 
@@ -81,18 +97,21 @@ rm -rf $RPM_BUILD_ROOT
 %post
 %gconf_schema_install %{name}.schemas
 %update_desktop_database_post
+%glib_compile_schemas
 
 %preun
 %gconf_schema_uninstall %{name}.schemas
 
 %postun
 %update_desktop_database_postun
+%glib_compile_schemas
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README DOCS/keyboard_shortcuts.txt DOCS/tech/*.*
 %attr(755,root,root) %{_bindir}/*
 %{_sysconfdir}/gconf/schemas/*.schemas
+%{_datadir}/glib-2.0/schemas/*.xml
 %{_iconsdir}/hicolor/*/apps/*.png
 %{_desktopdir}/*.desktop
 %{_mandir}/man1/*.1*
