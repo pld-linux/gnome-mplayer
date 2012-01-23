@@ -39,7 +39,7 @@ BuildRequires:	libnotify-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
-BuildRequires:	pulseaudio
+BuildRequires:	pulseaudio-devel
 BuildRequires:	rpmbuild(macros) >= 1.357
 BuildRequires:	which
 Requires(post,postun):	desktop-file-utils
@@ -83,12 +83,20 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas
-install %{name}.schemas $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas
+cp -p %{name}.schemas $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas
 
 install -d $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas
-install apps.gecko-mediaplayer.preferences.gschema.xml $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas
-install apps.gnome-mplayer.preferences.enums.xml $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas
-install apps.gnome-mplayer.preferences.gschema.xml $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas
+cp -p apps.gecko-mediaplayer.preferences.gschema.xml $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas
+cp -p apps.gnome-mplayer.preferences.enums.xml $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas
+cp -p apps.gnome-mplayer.preferences.gschema.xml $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas
+
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/%{name}
+
+# gnome2
+%{__rm} $RPM_BUILD_ROOT%{_datadir}/gnome-control-center/default-apps/gnome-mplayer.xml
+
+# not packaged
+%{__rm} $RPM_BUILD_ROOT%{_iconsdir}/hicolor/scalable/apps/gnome-mplayer.svg
 
 %find_lang %{name}
 
