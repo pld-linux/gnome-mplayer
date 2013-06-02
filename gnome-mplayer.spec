@@ -8,12 +8,12 @@
 Summary:	GNOME Frontend for MPlayer
 Summary(pl.UTF-8):	Frontend GNOME dla MPlayera
 Name:		gnome-mplayer
-Version:	1.0.7
+Version:	1.0.8
 Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://gnome-mplayer.googlecode.com/files/%{name}-%{version}.tar.gz
-# Source0-md5:	d0cdabdf1b3eaa25d5c007b5cbd2d9ce
+# Source0-md5:	9225dc0645d050ee31dd877559d7c16b
 Patch0:		%{name}-desktop.patch
 URL:		http://kdekorte.googlepages.com/gnomemplayer
 BuildRequires:	GConf2
@@ -27,7 +27,7 @@ BuildRequires:	dbus-glib-devel
 Requires(post,postun):	glib2 >= 1:2.26.0
 # BuildRequires:	gnome-power-manager
 BuildRequires:	gettext-devel
-BuildRequires:	gmtk-devel >= 1.0.7
+BuildRequires:	gmtk-devel >= 1.0.8
 %if %{with gtk3}
 BuildRequires:	gtk+3-devel
 %else
@@ -66,6 +66,8 @@ osobistym autora.
 %prep
 %setup -q
 %patch0 -p1
+%{__sed} -i 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/g' configure.in
+%{__sed} -i 's/AM_PROG_CC_STDC/AC_PROG_CC/g' configure.in
 
 %build
 %{__libtoolize}
