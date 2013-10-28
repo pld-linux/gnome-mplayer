@@ -8,12 +8,12 @@
 Summary:	GNOME Frontend for MPlayer
 Summary(pl.UTF-8):	Frontend GNOME dla MPlayera
 Name:		gnome-mplayer
-Version:	1.0.8
+Version:	1.0.9a
 Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://gnome-mplayer.googlecode.com/files/%{name}-%{version}.tar.gz
-# Source0-md5:	9225dc0645d050ee31dd877559d7c16b
+# Source0-md5:	7199f93760cbf7c63144244451b7b57a
 Patch0:		%{name}-desktop.patch
 URL:		http://kdekorte.googlepages.com/gnomemplayer
 BuildRequires:	GConf2
@@ -75,6 +75,7 @@ osobistym autora.
 %{__autoconf}
 %{__automake}
 %configure \
+	--disable-silent-rules \
 	%{!?with_gtk3:--disable-gtk3}
 %{__make}
 
