@@ -26,7 +26,7 @@ BuildRequires:	dbus-devel
 BuildRequires:	dbus-glib-devel
 Requires(post,postun):	glib2 >= 1:2.26.0
 # BuildRequires:	gnome-power-manager
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	gmtk-devel >= 1.0.8
 %if %{with gtk3}
 BuildRequires:	gtk+3-devel
